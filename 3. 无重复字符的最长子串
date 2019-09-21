@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int lengthOfLongestSubstring(string s)
+{
+    int start = 0, max_len = 0;
+    vector<int>site(256,-1);
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (site[int(s[i])]>=start )
+        {
+            start = site[int(s[i])]+1;
+        }
+        else
+        {
+           max_len = max(max_len , i+1 - start);
+        }
+        site[int(s[i])] =i; 
+    }
+    return max_len;
+}
+int main()
+{
+    
+    string s;
+    getline(cin,s);
+    cout << lengthOfLongestSubstring(s);
+    system("pause");
+    return 0;
+}
