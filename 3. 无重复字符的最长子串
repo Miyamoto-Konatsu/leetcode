@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+
 
 int lengthOfLongestSubstring(string s)
 {
@@ -18,13 +17,4 @@ int lengthOfLongestSubstring(string s)
         site[int(s[i])] =i; 
     }
     return max_len;
-}
-int main()
-{
-    
-    string s;
-    getline(cin,s);
-    cout << lengthOfLongestSubstring(s);
-    system("pause");
-    return 0;
 }
