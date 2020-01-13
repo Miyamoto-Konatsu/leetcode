@@ -9,26 +9,20 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode q(0),*p=&q;
-        int flag=0;
-        while(l1||l2||flag){
-            int temp=0;
-            if(l1!=nullptr) temp+=l1->val;
-            if(l2!=nullptr) temp+=l2->val;
-            temp+=flag;
-            
-            flag=temp/10;
-            temp%=10;
-            
-             ListNode *next = l1 ? l1 : l2;
-            if (next == nullptr) next = new ListNode(temp);
-            next->val = temp;
-            
-            p->next=next;
-            p=p->next;
-            l1 = l1 ? l1->next : nullptr;
-            l2 = l2 ? l2->next : nullptr;
-        }
-        return q.next;
+     ListNode res(0), *cur = &res;
+  int next = 0;
+  while (l1 || l2 || next)
+  {
+    int temp = next;
+    temp += (l1 == NULL )? 0 : l1->val;
+    temp += (l2 == NULL) ? 0 : l2->val;
+    next = temp / 10;
+    cur->next = new ListNode(temp % 10);
+    cur = cur->next;
+  if(l1)l1=l1->next;
+   if(l2)l2=l2->next;
+  
+  }
+  return res.next;
     }
 };
